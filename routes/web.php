@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/call-sync-http', "App\Http\Controllers\CallAsyncHttpApiController@callSyncHttp");
+Route::get('/spatie-sync-http', "App\Http\Controllers\AsyncSpatieController@callAsyncAPI");
+
