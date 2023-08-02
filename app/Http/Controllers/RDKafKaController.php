@@ -6,9 +6,11 @@ namespace App\Http\Controllers;
 
 class RDKafKaController extends Controller
 {
+    //fix https://github.com/php-enqueue/enqueue-dev/issues/749
     public function sendRDKafka(): bool
     {
         /**
+         * https://github.com/php-enqueue/enqueue-dev/issues/749
          * $topic->produce(RD_KAFKA_PARTITION_UA, 0, json_encode($dataPushFeed));
          * fc produce() php rd kafka return void and no ex, dont have way detect produce error or success
          * this is solution:
@@ -20,7 +22,7 @@ class RDKafKaController extends Controller
          * while ($producer->getOutQLen() > 0) {
          * $producer->poll(1);
          * }
-         * 2) Add solution timeout 
+         * 2) Add solution timeout
          */
         $brokers = "test";
         $topic = "topic";
