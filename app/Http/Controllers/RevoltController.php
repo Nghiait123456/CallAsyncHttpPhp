@@ -33,15 +33,15 @@ class RevoltController extends Controller
 
         EventLoop::run();
 
-//        $responseQuery = [];
-//        foreach ($restApi as $key => $value) {
-//            $index = $key;
-//            EventLoop::defer(function () use ($index, &$responseQuery): void {
-//                $r = DB::table('addresses')->get();
-//                $responseQuery[$index] = $r;
-//            });
-//        }
-//        EventLoop::run();
+        $responseQuery = [];
+        foreach ($restApi as $key => $value) {
+            $index = $key;
+            EventLoop::defer(function () use ($index, &$responseQuery): void {
+                $r = DB::table('addresses')->get();
+                $responseQuery[$index] = $r;
+            });
+        }
+        EventLoop::run();
         $endTime = Carbon::now();
 
         dd("done", $responseRestApi, $endTime->diffInMilliseconds($startTime));
